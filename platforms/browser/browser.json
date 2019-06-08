@@ -7,13 +7,22 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-media-stream": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
@@ -26,11 +35,20 @@
             "clobbers": [
                 "window.StatusBar"
             ]
+        },
+        {
+            "file": "plugins/es6-promise-plugin/www/promise.js",
+            "id": "es6-promise-plugin.Promise",
+            "pluginId": "es6-promise-plugin",
+            "runs": true
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-console": "1.0.7",
-        "cordova-plugin-statusbar": "1.0.1"
+        "cordova-plugin-statusbar": "1.0.1",
+        "cordova-plugin-whitelist": "1.2.2",
+        "es6-promise-plugin": "4.2.2",
+        "cordova-plugin-compat": "1.2.0",
+        "phonegap-plugin-media-stream": "1.2.1"
     }
 }

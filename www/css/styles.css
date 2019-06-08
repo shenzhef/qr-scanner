@@ -13,3 +13,5 @@
 .statusbar-overlay {
     background: #000000;
 }
+
+#preview {margin-left: 400px;margin-top: 200px; background-color: red; height: 500px;width: 500px;}

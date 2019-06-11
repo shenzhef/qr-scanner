@@ -7,21 +7,32 @@ name: 'qr-scanner',
 theme: 'ios',
 id: 'fitness.capitan.qr-scanner'
 });
+$$('.boton').on('click',function(){
+  navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+      destinationType: Camera.DestinationType.FILE_URI });
 
+  function onSuccess(imageURI) {
+      alert("see")
+  }
 
-var constraints = navigator.mediaDevices.getSupportedConstraints();
-console.log(constraints);
-navigator.mediaDevices.getUserMedia({
-    'video': {
-        facingMode: 'user'
-    }
-}).then(function(mediaStream) {
-  // do something with the media stream
-  var mediaControl = document.querySelector('video');
-  mediaControl.srcObject = mediaStream;
-  mediaControl.src = URL.createObjectURL(mediaStream)
-  console.log("funciona");
+  function onFail(message) {
+      alert('Failed because: ' + message);
+  }
 });
+
+// var constraints = navigator.mediaDevices.getSupportedConstraints();
+// console.log(constraints);
+// navigator.mediaDevices.getUserMedia({
+//     'video': {
+//         facingMode: 'user'
+//     }
+// }).then(function(mediaStream) {
+//   // do something with the media stream
+//   var mediaControl = document.querySelector('video');
+//   mediaControl.srcObject = mediaStream;
+//   mediaControl.src = URL.createObjectURL(mediaStream)
+//   console.log("funciona");
+// });
 
 // Add view
 // var mainView = myApp.addView('.view-main', {
@@ -32,11 +43,13 @@ navigator.mediaDevices.getUserMedia({
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
-});
 
+});
 
 // Option 2. Using one 'pageInit' event handler for all pages:
 $$(document).on('pageInit', function (e) {
+
+
     // Get page data from event data
     var page = e.detail.page;
 
@@ -44,10 +57,4 @@ $$(document).on('pageInit', function (e) {
         // Following code will be executed for page with data-page attribute equal to "about"
         myApp.alert('Here comes About page');
     }
-})
-
-// Option 2. Using live 'pageInit' event handlers for each page
-$$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    // Following code will be executed for page with data-page attribute equal to "about"
-    myApp.alert('Here comes About page');
 })

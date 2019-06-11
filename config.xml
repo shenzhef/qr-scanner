@@ -15,9 +15,24 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <dependency id="es6-promise-plugin" />
+    <dependency id="cordova-plugin-compat" version="^1.1.0" />
     <platform name="android">
-        <preference name="android-minSdkVersion" value="14" />
-        <allow-intent href="market:*" />
+        <js-module name="MediaDevices" src="plugins/phonegap-plugin-media-stream/www/android/MediaDevices.js">
+            <clobbers target="navigator.mediaDevices" />
+        </js-module>
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="MediaStreams">
+                <param name="android-package" value="com.adobe.phonegap.media.MediaStreamsPlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+        </config-file>
+        <source-file src="plugins/phonegap-plugin-media-stream/src/android/MediaStreamsPlugin.java" target-dir="src/com/adobe/phonegap/media" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -28,4 +43,5 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="phonegap-plugin-media-stream" spec="~1.2.1" />
 </widget>
